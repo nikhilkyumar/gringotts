@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #292720;
+  background: #eee8da;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --gringotts-ink: #292720;
+  --gringotts-ink-soft: #454239;
+
+  --gringotts-green: #31483f;
+  --gringotts-green-dark: #253a33;
+  --gringotts-green-light: #486257;
+
+  --gringotts-brass: #ad8750;
+  --gringotts-brass-light: #c8a86e;
+
+  --gringotts-parchment: #f2ead8;
+  --gringotts-paper: #fbf7ec;
+  --gringotts-paper-dark: #e5dbc5;
+
+  --gringotts-muted: #777267;
+  --gringotts-border: #d9d0bd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(173, 135, 80, 0.1),
+      transparent 32%
+    ),
+    #eee8da;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input::selection {
+  background: rgba(173, 135, 80, 0.22);
+}
+
+::selection {
+  background: rgba(173, 135, 80, 0.22);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e4ddce;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #b8ad99;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #958875;
+}
+
+/* =========================================
+   GRINGOTTS TYPOGRAPHY
+========================================= */
+
+.gringotts-display {
+  font-family:
+    "Cinzel",
+    "Times New Roman",
+    serif;
+
+  letter-spacing: 0.025em;
+  font-weight: 600;
+}
+
+.gringotts-title {
+  font-family:
+    "Cinzel",
+    "Times New Roman",
+    serif;
+
+  letter-spacing: 0.02em;
+}
+
+.gringotts-sparkle {
+  animation: gringotts-glow 3.5s ease-in-out infinite;
+}
+
+.gringotts-divider {
+  height: 1px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(173, 135, 80, 0.25),
+    rgba(173, 135, 80, 0.7),
+    rgba(173, 135, 80, 0.25),
+    transparent
+  );
+}
+
+@keyframes gringotts-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
