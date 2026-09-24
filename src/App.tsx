@@ -1,5 +1,6 @@
 
 import Calculator from "./components/calculator/Calculator";
+import { Analytics } from "@vercel/analytics/react";
 
 function VaultKeeper() {
   return (
@@ -270,91 +271,95 @@ function VaultKeeper() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#eee8da]">
-      {/* ================= HEADER ================= */}
+    <>
+      <Analytics />
 
-      <header className="relative border-b border-[#d9d0bd] bg-[#f2ead8]">
-        {/* Background decoration */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#ad8750]/[0.06] blur-3xl" />
+      <div className="min-h-screen bg-[#eee8da]">
+        {/* ================= HEADER ================= */}
 
-          <div className="absolute -right-24 -top-20 h-64 w-64 rounded-full bg-[#31483f]/[0.05] blur-3xl" />
-        </div>
+        <header className="relative border-b border-[#d9d0bd] bg-[#f2ead8]">
+          {/* Background decoration */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#ad8750]/[0.06] blur-3xl" />
 
-        {/* Header content */}
-        <div className="relative mx-auto flex max-w-6xl items-center px-5 py-4 sm:px-6 sm:py-5 lg:px-8">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <VaultKeeper />
+            <div className="absolute -right-24 -top-20 h-64 w-64 rounded-full bg-[#31483f]/[0.05] blur-3xl" />
+          </div>
 
-            <div>
-              <h1 className="gringotts-display text-3xl leading-none text-[#292720] sm:text-4xl">
-                Gringotts
-              </h1>
+          {/* Header content */}
+          <div className="relative mx-auto flex max-w-6xl items-center px-5 py-4 sm:px-6 sm:py-5 lg:px-8">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <VaultKeeper />
 
-              <p className="mt-1 text-xs font-medium tracking-wide text-[#777267] sm:text-sm">
-                SIP & Corpus Calculator
-              </p>
+              <div>
+                <h1 className="gringotts-display text-3xl leading-none text-[#292720] sm:text-4xl">
+                  Gringotts
+                </h1>
+
+                <p className="mt-1 text-xs font-medium tracking-wide text-[#777267] sm:text-sm">
+                  SIP & Corpus Calculator
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="gringotts-divider" />
-      </header>
+          <div className="gringotts-divider" />
+        </header>
 
-      {/* ================= CALCULATOR ================= */}
+        {/* ================= CALCULATOR ================= */}
 
-      <main>
-        <Calculator />
-      </main>
+        <main>
+          <Calculator />
+        </main>
 
-      {/* ================= FOOTER ================= */}
+        {/* ================= FOOTER ================= */}
 
-      <footer className="border-t border-[#d9d0bd] bg-[#e6decd] px-5 py-7">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
-          {/* Copyright */}
-          <p className="text-xs text-[#777267]">
-            © {new Date().getFullYear()} Gringotts. Plan wisely. Grow steadily.
-          </p>
+        <footer className="border-t border-[#d9d0bd] bg-[#e6decd] px-5 py-7">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
+            {/* Copyright */}
+            <p className="text-xs text-[#777267]">
+              © {new Date().getFullYear()} Gringotts. Plan wisely. Grow steadily.
+            </p>
 
-          {/* Links */}
-          <div className="flex items-center gap-2">
-            {/* GitHub */}
-            <a
-              href="https://github.com/nikhilkyumar"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit GitHub repository"
-              className="group flex items-center gap-2 rounded-full border border-[#cfc4ad] bg-[#f2ead8] px-4 py-2 text-xs font-medium text-[#4d4a42] transition-all duration-200 hover:border-[#ad8750] hover:bg-[#fbf7ec] hover:text-[#292720]"
-            >
-              <span
-                aria-hidden="true"
-                className="text-sm transition-transform duration-200 group-hover:scale-110"
+            {/* Links */}
+            <div className="flex items-center gap-2">
+              {/* GitHub */}
+              <a
+                href="https://github.com/nikhilkyumar"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit GitHub repository"
+                className="group flex items-center gap-2 rounded-full border border-[#cfc4ad] bg-[#f2ead8] px-4 py-2 text-xs font-medium text-[#4d4a42] transition-all duration-200 hover:border-[#ad8750] hover:bg-[#fbf7ec] hover:text-[#292720]"
               >
-                ⌘
-              </span>
+                <span
+                  aria-hidden="true"
+                  className="text-sm transition-transform duration-200 group-hover:scale-110"
+                >
+                  ⌘
+                </span>
 
-              GitHub
-            </a>
+                GitHub
+              </a>
 
-            {/* Contact */}
-            <a
-              href="mailto:nikhilkumar.cout@gmail.com"
-              aria-label="Contact Gringotts"
-              className="group flex items-center gap-2 rounded-full border border-[#cfc4ad] bg-[#f2ead8] px-4 py-2 text-xs font-medium text-[#4d4a42] transition-all duration-200 hover:border-[#ad8750] hover:bg-[#fbf7ec] hover:text-[#292720]"
-            >
-              <span
-                aria-hidden="true"
-                className="text-sm transition-transform duration-200 group-hover:scale-110"
+              {/* Contact */}
+              <a
+                href="mailto:nikhilkumar.cout@gmail.com"
+                aria-label="Contact Gringotts"
+                className="group flex items-center gap-2 rounded-full border border-[#cfc4ad] bg-[#f2ead8] px-4 py-2 text-xs font-medium text-[#4d4a42] transition-all duration-200 hover:border-[#ad8750] hover:bg-[#fbf7ec] hover:text-[#292720]"
               >
-                ✉
-              </span>
+                <span
+                  aria-hidden="true"
+                  className="text-sm transition-transform duration-200 group-hover:scale-110"
+                >
+                  ✉
+                </span>
 
-              Contact
-            </a>
+                Contact
+              </a>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }
 
