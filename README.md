@@ -1,33 +1,51 @@
-# React + TypeScript + Vite
+# 🏦 Gringotts
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+### SIP & Corpus Planning Calculator for Indian Investors
 
-Currently, two official plugins are available:
+Gringotts is a modern investment planning calculator built for Indian investors who want to understand how their existing investments, monthly SIPs, annual SIP increases, and future lump-sum investments could grow over time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It is designed to answer a simple but important question:
 
-## React Compiler
+> **"If I invest this much today and continue investing over the next few years, what could my portfolio become?"**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+And for goal-based planning:
 
-## Expanding the Oxlint configuration
+> **"If I want to reach a particular corpus, how much should I invest every month?"**
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## 🎯 The Problem
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-"# gringotts" 
+Investment calculators often make portfolio planning unnecessarily complicated.
+
+Many calculators focus on a single SIP amount and a single return assumption. Real-world investing is usually more dynamic.
+
+An investor may already have:
+
+- An existing investment corpus
+- A monthly SIP
+- Annual SIP increases
+- Future bonuses or other lump-sum investments
+- A specific investment horizon
+- A target corpus they want to reach
+
+The problem is that these different sources of investment don't all have the same amount of time to compound.
+
+For example:
+
+```text
+Existing Corpus
+      │
+      ├── compounds from today
+      │
+Monthly SIP
+      │
+      ├── invested every month
+      │
+      ├── may increase every year
+      │
+Future Lump Sum
+      │
+      ├── invested at a specific future month
+      │
+      └── compounds only after that investment
