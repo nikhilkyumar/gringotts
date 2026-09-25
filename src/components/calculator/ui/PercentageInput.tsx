@@ -17,7 +17,7 @@ function PercentageInput({
     <div>
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-slate-700">
-          Expected annual return
+          annual step up increase in %
         </span>
 
         <span className="text-lg font-bold text-slate-950">
