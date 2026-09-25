@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 interface PercentageInputProps {
   value: number;
   onChange: (value: number) => void;
@@ -15,6 +17,75 @@ function PercentageInput({
   max = 30,
   step = 0.5,
 }: PercentageInputProps) {
+  const [inputValue, setInputValue] = useState(String(value));
+
+  // Keep the text field synchronized when the value
+  // changes from the slider or from the parent component.
+  useEffect(() => {
+    setInputValue(String(value));
+  }, [value]);
+
+  function handleInputChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    const rawValue = event.target.value;
+
+    // Allow the user to temporarily clear the field
+    // while editing.
+    if (rawValue === "") {
+      setInputValue("");
+      return;
+    }
+
+    // Allow normal numeric input, including decimals.
+    if (!/^\d*\.?\d*$/.test(rawValue)) {
+      return;
+    }
+
+    setInputValue(rawValue);
+
+    const numericValue = Number(rawValue);
+
+    if (
+      Number.isFinite(numericValue) &&
+      numericValue >= min &&
+      numericValue <= max
+    ) {
+      onChange(numericValue);
+    }
+  }
+
+  function handleInputBlur() {
+    if (inputValue === "") {
+      setInputValue(String(value));
+      return;
+    }
+
+    const numericValue = Number(inputValue);
+
+    if (!Number.isFinite(numericValue)) {
+      setInputValue(String(value));
+      return;
+    }
+
+    const clampedValue = Math.min(
+      max,
+      Math.max(min, numericValue)
+    );
+
+    setInputValue(String(clampedValue));
+    onChange(clampedValue);
+  }
+
+  function handleSliderChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    const numericValue = Number(event.target.value);
+
+    setInputValue(String(numericValue));
+    onChange(numericValue);
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -33,22 +104,17 @@ function PercentageInput({
         max={max}
         step={step}
         value={value}
-        onChange={(event) =>
-          onChange(Number(event.target.value))
-        }
+        onChange={handleSliderChange}
         className="mt-4 w-full accent-slate-900"
       />
 
-      <div className="mt-3 flex items-center rounded-xl border border-slate-300 bg-white px-4 focus-within:border-slate-900 focus-within:ring-2 focus-within:ring-slate-900/10">
+      <div className="mt-3 flex items-center rounded-xl border border-slate-300 bg-white px-4 transition focus-within:border-slate-900 focus-within:ring-2 focus-within:ring-slate-900/10">
         <input
-          type="number"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(event) =>
-            onChange(Number(event.target.value))
-          }
+          type="text"
+          inputMode="decimal"
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
           className="w-full bg-transparent py-3 text-base font-semibold text-slate-900 outline-none"
         />
 
