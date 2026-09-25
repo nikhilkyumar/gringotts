@@ -17,6 +17,7 @@ function AssumptionsSection({
 }: AssumptionsSectionProps) {
   return (
     <section className="rounded-2xl border border-[#e5e0d5] bg-[#fffdf8] p-5 shadow-[0_8px_30px_rgba(23,32,51,0.035)] sm:p-6">
+      {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f4ead2] text-[#a67b2d]">
@@ -41,14 +42,21 @@ function AssumptionsSection({
         </InfoTip>
       </div>
 
+      {/* Inputs */}
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
+        {/* Expected annual return */}
         <div>
           <PercentageInput
             value={annualReturn}
             onChange={onReturnChange}
+            label="Expected annual return"
+            min={0}
+            max={30}
+            step={0.5}
           />
         </div>
 
+        {/* Investment period */}
         <div>
           <div className="flex items-center gap-2">
             <Clock3
@@ -64,7 +72,7 @@ function AssumptionsSection({
             </label>
           </div>
 
-          <div className="mt-3 flex items-center rounded-xl border border-[#d7cfbf] bg-white px-4 transition focus-within:border-[#31483f] focus-within:ring-4 focus-within:ring-[#31483f]/10">
+          <div className="mt-3 flex items-center rounded-xl border border-[#d7cfbf] bg-white px-4 transition focus-within:border-[#6b2635] focus-within:ring-4 focus-within:ring-[#6b2635]/10">
             <input
               id="investment-years"
               type="number"
@@ -73,9 +81,12 @@ function AssumptionsSection({
               value={years}
               onChange={(event) =>
                 onYearsChange(
-                  Math.max(
-                    1,
-                    Number(event.target.value)
+                  Math.min(
+                    50,
+                    Math.max(
+                      1,
+                      Number(event.target.value)
+                    )
                   )
                 )
               }

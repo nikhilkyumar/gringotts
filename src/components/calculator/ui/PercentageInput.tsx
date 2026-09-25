@@ -1,6 +1,7 @@
 interface PercentageInputProps {
   value: number;
   onChange: (value: number) => void;
+  label?: string;
   min?: number;
   max?: number;
   step?: number;
@@ -9,6 +10,7 @@ interface PercentageInputProps {
 function PercentageInput({
   value,
   onChange,
+  label = "Expected annual return",
   min = 0,
   max = 30,
   step = 0.5,
@@ -17,7 +19,7 @@ function PercentageInput({
     <div>
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-slate-700">
-          annual step up increase in %
+          {label}
         </span>
 
         <span className="text-lg font-bold text-slate-950">

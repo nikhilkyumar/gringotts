@@ -1,4 +1,3 @@
-
 import { TrendingUp } from "lucide-react";
 import CurrencyInput from "./ui/CurrencyInput";
 import PercentageInput from "./ui/PercentageInput";
@@ -90,6 +89,7 @@ function StepUpSection({
             <PercentageInput
               value={value}
               onChange={onValueChange}
+              label="Annual SIP step-up"
               min={0}
               max={50}
               step={1}
